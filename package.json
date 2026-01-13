@@ -1,0 +1,26 @@
+{
+  "name": "noeterixsoft",
+  "version": "1.0.0",
+  "description": "Ecosistema de Ingeniería, Software, Robótica y Automatización",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Software",
+    "Robotics",
+    "Automation",
+    "AI",
+    "Telematics"
+  ],
+  "author": "Bernardo Gómez",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "framer-motion": "^12.24.10",
+    "openai": "^6.15.0"
+  }
+}
