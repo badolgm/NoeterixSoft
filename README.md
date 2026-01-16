@@ -1,44 +1,95 @@
-# 🌐 NoeterixSoft - Engineering & Software Ecosystem
+# 🌐 NoeterixSoft Ecosystem
 
-**NoeterixSoft** es una plataforma de alta ingeniería dedicada al desarrollo de software, automatización industrial, robótica y servicios telemáticos avanzados.
+!Status
+!Tech
+!License
 
-## 🛠 Líneas de Negocio
-- **Software & AI**: Desarrollos a medida, automatización y algoritmos de IA.
-- **Industrial Automation**: Robótica, drones (riego, vigilancia) y control de procesos.
-- **Telemática & Hardware**: Redes, servidores, CCTV y mantenimiento especializado.
-- **Marketplace**: Base de datos de componentes electrónicos y repuestos.
+> **Plataforma SaaS de Ingeniería, Automatización y Telemática.**
+> Un centro de comando unificado que adapta su interfaz dinámicamente según el sector industrial del cliente (Logística, Manufactura o IT).
+
+---
+
+## 📑 Índice Interactivo
+
+1.  Arquitectura y Funcionalidad
+2.  Módulos del Sistema
+3.  Instalación y Despliegue
+4.  Estructura del Proyecto
+
+---
+
+## 🧠 Arquitectura y Funcionalidad
+
+NoeterixSoft utiliza un enfoque de **Data-Driven UI**. El frontend es "agnóstico" y no contiene datos fijos. Es el Backend quien dicta qué componentes renderizar basándose en el contexto del negocio.
+
+### Características Clave:
+*   **Contexto Dinámico:** Cambio en tiempo real entre vistas de Logística (GPS), Industria (Sensores) e IT (Servidores).
+*   **Alertas Visuales:** Sistema de detección de estados críticos (`state: 'critical'`) que activa animaciones de alerta en la UI.
+*   **SPA (Single Page Application):** Navegación fluida entre el Dashboard y el Marketplace sin recargas.
+*   **IA Terminal:** Interfaz de línea de comandos simulada para interacción con el núcleo del sistema.
+
+---
+
+## 🛠 Módulos del Sistema
+
+| Módulo | Descripción | Métricas Clave |
+| :--- | :--- | :--- |
+| **Infraestructura IT** | Monitoreo de servidores y redes. | CPU Load, Latencia, Nodos Activos. |
+| **Logística & GPS** | Gestión de flotas y activos móviles. | Ubicación, Combustible, Temp. Carga. |
+| **Planta Industrial** | Control de líneas de producción. | Unidades/Hora, Temp. Hornos, Estado Máquina. |
+| **Marketplace** | Adquisición de hardware especializado. | Catálogo de PLCs, Robots y Sensores. |
+
+---
 
 ## 🚀 Instalación y Ejecución Local
 
 Para configurar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
 
-1.  **Clonar el Repositorio** (si aún no lo has hecho):
-    ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    cd NoeterixSoft
-    ```
+### 1. Prerrequisitos
+*   Node.js (v14 o superior)
+*   Git
 
-2.  **Instalar Dependencias**:
-    Este comando instalará todas las librerías necesarias para el proyecto, como Express.
-    ```bash
-    npm install
-    ```
+### 2. Instalación
 
-3.  **Configurar Variables de Entorno**:
-    Crea un archivo llamado `.env` en la raíz del proyecto. Este archivo contendrá las variables de configuración. Por ahora, solo necesitas el puerto.
-    ```
-    PORT=3000
-    ```
+```bash
+# Clonar el repositorio
+git clone <URL_DEL_REPOSITORIO>
+cd NoeterixSoft
 
-4.  **Ejecutar el Servidor**:
-    Este comando iniciará el servidor de Node.js.
-    ```bash
-    npm start
-    ```
-    *Alternativamente, puedes ejecutar `node src/index.js`.*
+# Instalar dependencias
+npm install
+```
 
-5.  **Ver la Aplicación**:
-    Abre tu navegador web y navega a `http://localhost:3000`. Deberías ver la página de bienvenida de NoeterixSoft.
+### 3. Configuración
+Crea un archivo `.env` en la raíz:
+```env
+PORT=3000
+NODE_ENV=Development
+```
+
+### 4. Ejecución
+```bash
+npm start
+```
+Accede a **`http://localhost:3000`**.
 
 ---
-© 2026 NoeterixSoft - Innovación Tecnológica.
+
+## 📂 Estructura del Proyecto
+
+```text
+NoeterixSoft/
+├── public/             # Archivos estáticos (Frontend)
+│   ├── css/            # Estilos (Glassmorphism)
+│   ├── js/             # Lógica del Cliente (SPA, Fetch)
+│   └── index.html      # Punto de entrada
+├── src/                # Lógica del Servidor (Backend)
+│   └── index.js        # API y Rutas Express
+├── Ayudas/             # Documentación y Bitácora
+└── package.json        # Dependencias
+```
+
+---
+
+© 2026 **NoeterixSoft** - *Ingeniería de Software & Automatización*.
+<br>Desarrollado por **Bernardo Gómez**.

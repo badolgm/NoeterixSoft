@@ -29,6 +29,43 @@ app.get('/api/status', (req, res) => {
     });
 });
 
+// Endpoint para datos del Dashboard (MOCK DATA)
+app.get('/api/dashboard/summary', (req, res) => {
+    const sector = req.query.sector || 'general'; // Detectar el sector solicitado
+    let metrics = [];
+
+    // Lógica de Negocio por Sector (Simulación de Base de Datos)
+    if (sector === 'logistica') {
+        // CASO 1: Flota de Vehículos (GPS, Combustible)
+        metrics = [
+            { type: 'gps', label: "🚛 Camión T-800", value: "En Ruta", desc: "Lat: 4.6097 | Lon: -74.0817" },
+            { type: 'level', label: "⛽ Combustible", value: "76%", desc: "Autonomía: 450km" },
+            { type: 'status', label: "❄️ Carga Fría", value: "-18°C", desc: "Temperatura Óptima" }
+        ];
+    } else if (sector === 'industrial') {
+        // CASO 2: Fábrica de Botellas (Contadores, Eficiencia)
+        metrics = [
+            { type: 'counter', label: "🍾 Producción/Hora", value: "1,250", desc: "Botellas (Meta: 1200)", state: 'ok' },
+            { type: 'level', label: "🔥 Temp. Horno", value: "850°C", desc: "Estable (Max: 900°C)", state: 'ok' },
+            { type: 'status', label: "⚙️ Cinta #4", value: "MANTENIMIENTO", desc: "Parada Programada", state: 'critical' }
+        ];
+    } else {
+        // CASO DEFAULT: Infraestructura IT
+        metrics = [
+            { type: 'status', label: "🤖 Nodos Robóticos", value: "4/6", desc: "Unidades Operativas" },
+            { type: 'level', label: "📡 Telemetría IoT", value: Math.floor(Math.random() * (45 - 12) + 12) + "ms", desc: "Latencia Global" },
+            { type: 'level', label: "🧠 Carga del Núcleo", value: Math.floor(Math.random() * (80 - 20) + 20) + "%", desc: "Uso de CPU Cluster" }
+        ];
+    }
+
+    res.json({
+        sector: sector,
+        metrics: metrics,
+        lastUpdate: new Date().toISOString()
+    });
+});
+
+
 // Endpoint IA (Placeholder profesional)
 app.post('/api/ia-asistente', (req, res) => {
     console.log(`[IA Request] Datos recibidos:`, req.body);

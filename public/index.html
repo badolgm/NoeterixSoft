@@ -3,37 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoeterixSoft</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        .container {
-            text-align: center;
-            padding: 50px;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
-</head>
+    <title>NoeterixSoft | Command Center</title>
+    <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
-    <div class="container">
-        <h1>🚀 Bienvenido a NoeterixSoft</h1>
-        <p>El núcleo de nuestro ecosistema de Ingeniería, Software y Robótica está en línea.</p>
-        <p>La interfaz de usuario y el dashboard están en desarrollo.</p>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">NOETERIX<span>SOFT</span></div>
+            <ul class="nav-menu">
+                <li class="nav-item active" id="nav-dashboard">📊 Dashboard General</li>
+                <li class="nav-item" id="nav-robotics">🤖 Robótica e IOT</li>
+                <li class="nav-item" id="nav-telematics">📡 Telemática</li>
+                <li class="nav-item" id="nav-marketplace">🛒 Marketplace</li>
+                <li class="nav-item" id="nav-config">⚙️ Configuración</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="top-bar">
+                <h2>Panel de Control</h2>
+                <!-- Selector de Contexto de Negocio -->
+                <select id="sector-selector" class="sector-select">
+                    <option value="general">🖥️ Infraestructura IT</option>
+                    <option value="logistica">🚚 Logística & GPS</option>
+                    <option value="industrial">🏭 Planta Industrial</option>
+                </select>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    SISTEMA ONLINE
+                </div>
+            </div>
+
+            <!-- VISTA 1: DASHBOARD (Por defecto visible) -->
+            <section id="view-dashboard">
+                <div class="modules-grid">
+                    <div class="card" onclick="sendCommand('status robotica')">
+                        <h3 id="card1-label">Cargando...</h3>
+                        <h2 id="card1-value" style="font-size: 2.5rem; color: var(--neon-cyan);">--</h2>
+                        <p id="card1-desc" style="color: var(--text-muted);">...</p>
+                    </div>
+                    <div class="card" onclick="sendCommand('status red')">
+                        <h3 id="card2-label">Cargando...</h3>
+                        <h2 id="card2-value" style="font-size: 2.5rem; color: var(--neon-green);">--</h2>
+                        <p id="card2-desc" style="color: var(--text-muted);">...</p>
+                    </div>
+                    <div class="card" onclick="sendCommand('status cpu')">
+                        <h3 id="card3-label">Cargando...</h3>
+                        <h2 id="card3-value" style="font-size: 2.5rem; color: var(--neon-purple);">--</h2>
+                        <p id="card3-desc" style="color: var(--text-muted);">...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA 2: MARKETPLACE (Por defecto oculta) -->
+            <section id="view-marketplace" style="display: none;">
+                <h3 style="margin-bottom: 1rem; color: var(--neon-cyan);">🛒 Componentes Industriales Disponibles</h3>
+                <div class="modules-grid">
+                    <div class="card">
+                        <h3>Sensor LiDAR 360°</h3>
+                        <p style="color: var(--text-muted);">Para navegación autónoma de robots.</p>
+                        <button class="terminal-btn" style="margin-top:1rem; width:100%" onclick="quoteProduct('Sensor LiDAR 360°')">COTIZAR</button>
+                    </div>
+                    <div class="card">
+                        <h3>Módulo PLC Siemens</h3>
+                        <p style="color: var(--text-muted);">Controlador lógico programable S7-1200.</p>
+                        <button class="terminal-btn" style="margin-top:1rem; width:100%" onclick="quoteProduct('Módulo PLC Siemens')">COTIZAR</button>
+                    </div>
+                    <div class="card">
+                        <h3>Brazo KUKA KR-6</h3>
+                        <p style="color: var(--text-muted);">Robot industrial de 6 ejes reacondicionado.</p>
+                        <button class="terminal-btn" style="margin-top:1rem; width:100%" onclick="quoteProduct('Brazo KUKA KR-6')">COTIZAR</button>
+                    </div>
+                </div>
+            </section>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧠 Noeterix Neural Core (IA)</h3>
+            <div class="ai-terminal">
+                <div class="terminal-output" id="aiOutput">
+                    > Inicializando protocolo Noeterix...<br>
+                    > Conectado al Backend en puerto 3000.<br>
+                    > Esperando instrucciones del Ingeniero Bernardo Gómez...
+                </div>
+                <div class="terminal-input-area">
+                    <input type="text" id="aiInput" class="terminal-input" placeholder="Escribe un comando o consulta a la IA..." onkeypress="handleEnter(event)">
+                    <button class="terminal-btn" onclick="sendCommand()">ENVIAR</button>
+                </div>
+            </div>
+
+        </main>
     </div>
+
+    <!-- Vinculamos el script externo limpio -->
+    <script src="js/main.js"></script>
 </body>
 </html>
